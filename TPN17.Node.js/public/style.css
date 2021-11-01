@@ -1,0 +1,165 @@
+* {
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+}
+
+body {
+    background-color: rgb(60, 6, 94);
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    height: 90vh;
+    margin: 0;
+}
+
+.numeros {
+    text-align: center;
+    cursor: pointer;
+}
+
+.numeros:disabled {
+    opacity: 0.5;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    place-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ContenedorRespuestaMostrada {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    min-width: 100px;
+    max-height: 300px;
+}
+
+.boton {
+    margin-top: 50px;
+    background-color: rgb(41, 183, 221);
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    padding: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.2s ease-in;
+    text-align: center;
+    user-select: none;
+    width: 100px;
+}
+
+input {
+    background-color: rgb(41, 183, 221);
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 70px;
+    transition: 0.2s ease-in;
+}
+
+form>input {
+    width: auto;
+}
+
+.boton:hover,
+input:hover {
+    box-shadow: 0px 0px 10px 2px #ffffff;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor {
+    display: flex;
+}
+
+.contenedor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(70px, 70px);
+}
+
+.numerosAleatoriosRecibidosMostrados,
+.CirculoDeCarga,
+.borde {
+    width: 300px;
+    height: 300px;
+    display: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.CirculoDeCarga {
+    position: relative;
+    display: flex;
+}
+
+.RespuestaMostrada {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #29b7dd;
+    height: 100px;
+    align-items: flex-end;
+}
+
+.borde {
+    display: flex;
+    position: absolute;
+    border-radius: 50%;
+    border-top: solid 3px #29b7dd;
+    animation-duration: 2s;
+    animation-name: girar;
+    animation-iteration-count: infinite;
+    transition-timing-function: cubic-bezier(0.79, 0.14, 0.15, 0.86) !important;
+}
+
+.borde:nth-child(1) {
+    border-color: #29dd38;
+}
+
+.borde:nth-child(2) {
+    border-color: #dd2929;
+}
+
+.borde:nth-child(3) {
+    border-color: rgb(255, 255, 255, 0.5);
+}
+
+@keyframes girar {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.responder {
+    display: none;
+}
+
+.MostrarResultado1 {
+    display: flex;
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.57);
+    backdrop-filter: blur(1px);
+    z-index: 300;
+}
