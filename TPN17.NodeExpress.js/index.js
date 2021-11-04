@@ -1,9 +1,14 @@
 const express = require("express");
 const app = express();
-
-app.use(express.static("public"))
+const numerosAleatorios = require("./numerosAleatorios");
+app.use(express.static(__dirname + "/public"));
 
 app.get("/juego", (req, res) => {
+    let numAr = numerosAleatorios.GenerarNumerosAleatorios();
+    let numArContainer = "";
+    for (x = 0; x < 9; x++) {
+        numArContainer += `${numAr[x]}/`;
+    }
     res.send(`<!DOCTYPE html>
     <html lang="en">
     
@@ -13,18 +18,19 @@ app.get("/juego", (req, res) => {
         <title>Tp 16</title>
         <link rel="stylesheet" href="css/main.css" />
     </head>
-    
     <body>
         <form autocomplete="off" action="recuperardatos" method="post">
             <div class="CirculoDeCarga">
-            <div class="borde"></div>
+                <div class="borde"></div>
             </div>
-            <div class="ContenedorRespuestaMostrada">
-                <input type="hidden" value=" " id="numerosAleatorios" />
-                <input type="hidden" id="respuesta" />
+            <div class="ContenedorNumsAleatorios"> 
+                <input type="hidden" value="${numArContainer}" id="nums" />
                 <label id="respuestaMostrada"></label>
             </div>
-            <div class="responder">
+            <div class="ContenedorRespuestaMostrada">
+            <input type="text" id="respuesta" readonly/>
+            </div>
+            <div class="responder"> 
                 <div class="contenedor-grid center c1">
                     <input class="numeros" type="button" value="1" />
                     <input class="numeros" type="button" value="2" />
@@ -40,16 +46,16 @@ app.get("/juego", (req, res) => {
                     <div></div>
                 </div>
                 <div class="contenedor center">
-                    <input id="boton" type="button" class="boton" value="Enviar" />
+                    <input id="boton" disabled="true" type="button" class="boton numeros" value="Enviar" />
                 </div>
             </div>
         </form>
     </body>
     <script src="js/app.js"></script>
     
-    </html>`)
-})
+    </html>`);
+});
 
 app.listen(8888, () => {
-    console.log("Servidor iniciado en el puerto 8888")
-})
+    console.log("Servidor iniciado en el puerto 8888");
+});

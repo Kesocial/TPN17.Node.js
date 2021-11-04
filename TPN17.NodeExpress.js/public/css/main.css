@@ -4,10 +4,7 @@
 }
 
 body {
-    background-color: rgb(60, 6, 94);
-    display: flex;
-    place-items: center;
-    flex-direction: column;
+    background-color: rgb(23, 20, 39);
     height: 90vh;
     margin: 0;
 }
@@ -15,10 +12,12 @@ body {
 .numeros {
     text-align: center;
     cursor: pointer;
+    font-size: 20px;
 }
 
 .numeros:disabled {
     opacity: 0.5;
+    box-shadow: none;
 }
 
 form {
@@ -29,22 +28,24 @@ form {
     height: 100%;
 }
 
-.ContenedorRespuestaMostrada {
+.ContenedorNumsAleatorios {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    max-width: 500px;
+    max-width: 250px;
     min-width: 100px;
+    height: 100%;
     max-height: 300px;
+    position: absolute;
 }
 
 .boton {
     margin-top: 50px;
-    background-color: rgb(41, 183, 221);
-    border: none;
-    border-radius: 30px;
+    background-color: transparent;
+    border: solid 2px #ffffff;
+    border-radius: 2px;
     font-size: 20px;
     padding: 15px;
     cursor: pointer;
@@ -56,9 +57,9 @@ form {
 }
 
 input {
-    background-color: rgb(41, 183, 221);
-    border: none;
-    border-radius: 30px;
+    background-color: transparent;
+    border: solid 2px #ffffff;
+    border-radius: 2px;
     font-size: 20px;
     cursor: pointer;
     width: 70px;
@@ -90,7 +91,7 @@ input:hover {
     grid-auto-rows: minmax(70px, 70px);
 }
 
-.numerosAleatoriosRecibidosMostrados,
+.numerosAleatorios,
 .CirculoDeCarga,
 .borde {
     width: 300px;
@@ -116,27 +117,38 @@ input:hover {
     align-items: flex-end;
 }
 
+#respuesta {
+    margin-bottom: 20px;
+    font-size: 25px;
+    height: 100px;
+}
+
+#respuesta:focus-visible {
+    outline: none !important;
+    cursor: text;
+}
+
 .borde {
     display: flex;
     position: absolute;
     border-radius: 50%;
-    border-top: solid 3px #29b7dd;
+    border-top: solid 3px #ffffff;
     animation-duration: 2s;
     animation-name: girar;
     animation-iteration-count: infinite;
     transition-timing-function: cubic-bezier(0.79, 0.14, 0.15, 0.86) !important;
 }
 
-.borde:nth-child(1) {
-    border-color: #29dd38;
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
 }
 
-.borde:nth-child(2) {
-    border-color: #dd2929;
-}
-
-.borde:nth-child(3) {
-    border-color: rgb(255, 255, 255, 0.5);
+h3 {
+    text-align: center;
 }
 
 @keyframes girar {
@@ -152,14 +164,30 @@ input:hover {
     display: none;
 }
 
-.MostrarResultado1 {
-    display: flex;
-    position: absolute;
+.numerosAleatorios {
+    display: none;
+}
+
+.ContenedorRespuestaMostrada {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 250px;
+    min-width: 100px;
+    height: 100%;
+    max-height: 100px;
+}
+
+input[type="text"] {
+    border-radius: 2px;
+    font-size: 20px;
     width: 100% !important;
-    height: 100% !important;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.57);
-    backdrop-filter: blur(1px);
-    z-index: 300;
+    box-shadow: none !important;
+    text-align: center;
+}
+
+input[type="text"]:read-only {
+    box-shadow: none;
 }
