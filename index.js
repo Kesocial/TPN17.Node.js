@@ -6,7 +6,7 @@ app.use(express.static(__dirname + "/public"));
 app.get("/resultado", (req, res) => {
     res.send();
 });
-app.set('port',process.env.PORT || 8888);
+app.set("port", process.env.PORT || 8888);
 app.get("/juego", (req, res) => {
     i++;
     console.log(`Cantidad de pedidos a "juego" ${i}`);
@@ -93,6 +93,6 @@ app.get("/juego", (req, res) => {
     </html>`);
 });
 
-app.listen(app.get('port'), () => {
-    console.log(`Servidor iniciado en el${app.get('port')}`);
+app.listen(app.get("port"), () => {
+    console.log(`Servidor iniciado en el${app.get("port")}`);
 });
