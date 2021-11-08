@@ -92,6 +92,8 @@ app.get("/juego", (req, res) => {
     </html>`);
 });
 
-app.listen(8888, () => {
-    console.log("Servidor iniciado en el puerto 8888");
+var server_port = process.env.YOUR_PORT || process.env.PORT || 8888;
+var server_host = process.env.YOUR_HOST || "0.0.0.0";
+servidor.listen(server_port, server_host, function() {
+    console.log("Listening on port %d", server_port);
 });
